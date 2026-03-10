@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="title">Edit Listing #{{l.id}}</h1>
+
+<div class="box">
+  <form method="post" action="/shop/listings/{{l.id}}/update">
+    <div class="columns is-multiline">
+      <div class="column is-3"><label class="label is-size-7">Game</label><input class="input" name="game" value="{{l.game}}"></div>
+      <div class="column is-6"><label class="label is-size-7">Title</label><input class="input" name="title" value="{{l.title}}"></div>
+      <div class="column is-3"><label class="label is-size-7">Price</label><input class="input" name="price_int" value="{{l.price_int}}"></div>
+
+      <div class="column is-3"><label class="label is-size-7">Region</label><input class="input" name="region" value="{{l.region or ''}}"></div>
+      <div class="column is-3"><label class="label is-size-7">Rank</label><input class="input" name="rank" value="{{l.rank or ''}}"></div>
+
+      <div class="column is-3">
+        <label class="label is-size-7">Preview Type</label>
+        <div class="select is-fullwidth">
+          <select name="preview_type">
+            <option value="text" {% if l.preview_type=='text' %}selected{% endif %}>text</option>
+            <option value="image" {% if l.preview_type=='image' %}selected{% endif %}>image</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="column is-3">
+        <label class="label is-size-7">Active</label>
+        <label class="checkbox"><input type="checkbox" name="is_active" {% if l.is_active==1 %}checked{% endif %}> Active</label>
+      </div>
+
+      <div class="column is-12">
+        <label class="label is-size-7">Description</label>
+        <textarea class="textarea" name="description">{{l.description or ''}}</textarea>
+      </div>
+    </div>
+    <button class="button is-link" type="submit">Save</button>
+  </form>
+</div>
+
+<div class="box">
+  <h2 class="subtitle">Upload Preview</h2>
+  <div class="content is-size-7"><b>Current:</b> {{l.preview_path or '-'}}</div>
+  <form method="post" action="/shop/listings/{{l.id}}/upload_preview" enctype="multipart/form-data">
+    <input class="input" type="file" name="preview" accept="image/*">
+    <button class="button is-primary mt-2" type="submit">Upload</button>
+  </form>
+</div>
+
+<div class="box">
+  <h2 class="subtitle">Stock</h2>
+  <div class="content is-size-7">
+    <div><b>Available:</b> {{a}} | <b>Reserved:</b> {{r}} | <b>Sold:</b> {{s}}</div>
+    <div>1 akun per baris. Format bebas (username:password | note).</div>
+  </div>
+
+  <form method="post" action="/shop/listings/{{l.id}}/add_stock">
+    <textarea class="textarea" name="stocks" rows="8" placeholder="username:password | note..."></textarea>
+    <button class="button is-link mt-2" type="submit">Add Stock Bulk</button>
+  </form>
+</div>
+
+<div class="box">
+  <h2 class="subtitle">Stock List (latest 300)</h2>
+  <div class="table-container">
+  <table class="table is-striped is-fullwidth is-size-7">
+    <thead><tr><th>ID</th><th>Status</th><th>Creds</th><th>Created</th><th>Sold</th></tr></thead>
+    <tbody>
+      {% for s in stocks %}
+      <tr>
+        <td>{{s.id}}</td>
+        <td>{{s.status}}</td>
+        <td class="clip">{{s.creds_text}}</td>
+        <td class="clip">{{s.created_at}}</td>
+        <td class="clip">{{s.sold_at or ''}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  </div>
+</div>
+{% endblock %}

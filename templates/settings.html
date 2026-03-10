@@ -1,0 +1,158 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="title">Settings (Full)</h1>
+
+<div class="columns is-multiline">
+  <div class="column is-6">
+    <div class="box">
+      <h2 class="subtitle">Bot Info</h2>
+      {% if bot_err %}
+        <article class="message is-danger">
+          <div class="message-body">Bot API error: {{ bot_err }}</div>
+        </article>
+      {% endif %}
+      {% if bot_info %}
+        <div class="content is-size-7">
+          <ul>
+            <li><b>ID</b>: {{ bot_info.id }}</li>
+            <li><b>Username</b>: @{{ bot_info.username }}</li>
+            <li><b>Name</b>: {{ bot_info.first_name }}</li>
+            <li><b>Can join groups</b>: {{ bot_info.can_join_groups }}</li>
+            <li><b>Can read all group messages</b>: {{ bot_info.can_read_all_group_messages }}</li>
+          </ul>
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="box">
+      <h2 class="subtitle">Upload Foto Profil Bot</h2>
+      <form method="post" action="/settings/photo" enctype="multipart/form-data">
+        <div class="field">
+          <div class="file has-name is-fullwidth">
+            <label class="file-label">
+              <input class="file-input" type="file" name="photo" accept="image/*" required>
+              <span class="file-cta"><span class="file-label">Pilih foto…</span></span>
+              <span class="file-name">JPEG/PNG kecil lebih aman</span>
+            </label>
+          </div>
+        </div>
+        <button class="button is-link" type="submit">Upload</button>
+      </form>
+
+      <form class="mt-3" method="post" action="/settings/photo/delete" onsubmit="return confirm('Hapus foto profil bot?');">
+        <button class="button is-danger is-light" type="submit">Delete Foto Profil</button>
+      </form>
+    </div>
+
+    <div class="box">
+      <h2 class="subtitle">Bot Profile (Name / Description)</h2>
+      <form method="post" action="/settings/botprofile">
+        <div class="field">
+          <label class="label is-size-7">Name (setMyName)</label>
+          <input class="input" name="name" placeholder="Nama bot baru">
+        </div>
+        <div class="field">
+          <label class="label is-size-7">Description (setMyDescription)</label>
+          <textarea class="textarea" name="description" placeholder="Deskripsi bot..."></textarea>
+        </div>
+        <div class="field">
+          <label class="label is-size-7">Short Description (setMyShortDescription)</label>
+          <input class="input" name="short_description" placeholder="Deskripsi singkat...">
+        </div>
+        <button class="button is-link" type="submit">Simpan</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="column is-6">
+    <div class="box">
+      <h2 class="subtitle">Default Limits + Toggle Fitur</h2>
+      <form method="post" action="/settings/defaults">
+        <div class="columns is-multiline">
+          <div class="column is-6">
+            <label class="label is-size-7">FREE_DAILY_LIMIT</label>
+            <input class="input" name="FREE_DAILY_LIMIT" value="{{ s.get('FREE_DAILY_LIMIT','5') }}">
+          </div>
+          <div class="column is-6">
+            <label class="label is-size-7">PREMIUM_DAILY_LIMIT</label>
+            <input class="input" name="PREMIUM_DAILY_LIMIT" value="{{ s.get('PREMIUM_DAILY_LIMIT','50') }}">
+          </div>
+          <div class="column is-6">
+            <label class="label is-size-7">FREE_MAX_MB</label>
+            <input class="input" name="FREE_MAX_MB" value="{{ s.get('FREE_MAX_MB','45') }}">
+          </div>
+          <div class="column is-6">
+            <label class="label is-size-7">PREMIUM_MAX_MB</label>
+            <input class="input" name="PREMIUM_MAX_MB" value="{{ s.get('PREMIUM_MAX_MB','45') }}">
+          </div>
+        </div>
+
+        <hr>
+
+        <div class="columns is-multiline is-size-7">
+          {% set toggles = ['tiktok','instagram','facebook','youtube','twitter','pinterest','soundcloud','reddit','audio'] %}
+          {% for t in toggles %}
+            <div class="column is-4">
+              <label class="checkbox">
+                <input type="checkbox" name="enable_{{t}}" {% if s.get('enable_' ~ t, '1') == '1' %}checked{% endif %}>
+                enable_{{t}}
+              </label>
+            </div>
+          {% endfor %}
+        </div>
+
+        <button class="button is-primary" type="submit">Save Settings</button>
+        <p class="help">Bot akan membaca setting dari DB, jadi biasanya tidak perlu restart.</p>
+      </form>
+    </div>
+
+    <div class="box">
+      <h2 class="subtitle">Bot Commands (setMyCommands)</h2>
+      <form method="post" action="/settings/botcommands">
+        <div class="field">
+          <label class="label is-size-7">Format per baris: command - deskripsi</label>
+          <textarea class="textarea" name="commands" rows="10" placeholder="start - Mulai&#10;menu - Tampilkan menu&#10;dl - Download link&#10;audio - Audio mp3"></textarea>
+        </div>
+        <button class="button is-link" type="submit">Update Commands</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+<hr>
+
+<div class="box">
+  <h2 class="subtitle">Banner Menu (Header Visual di Chat)</h2>
+  <p class="is-size-7">
+    Telegram tidak bisa ubah header top bar, tapi bot bisa menampilkan <b>banner</b> sebagai pesan menu (foto + tombol).
+    Upload banner JPG/PNG kecil (disarankan 1280x720 atau 1080x600, < 1MB).
+  </p>
+
+  <form method="post" action="/settings/banner" enctype="multipart/form-data">
+    <div class="field">
+      <div class="file has-name is-fullwidth">
+        <label class="file-label">
+          <input class="file-input" type="file" name="banner" accept="image/*" required>
+          <span class="file-cta"><span class="file-label">Pilih banner…</span></span>
+          <span class="file-name">JPG/PNG</span>
+        </label>
+      </div>
+    </div>
+    <button class="button is-primary" type="submit">Upload Banner Menu</button>
+  </form>
+
+  <form class="mt-3" method="post" action="/settings/banner/delete" onsubmit="return confirm('Hapus banner menu?');">
+    <button class="button is-danger is-light" type="submit">Delete Banner Menu</button>
+  </form>
+
+  <div class="mt-4">
+    <p class="is-size-7"><b>Preview (jika ada):</b></p>
+    <figure class="image">
+      <img src="{{ url_for('static', filename='menu_banner.jpg') }}" onerror="this.style.display='none'">
+    </figure>
+    <figure class="image mt-2">
+      <img src="{{ url_for('static', filename='menu_banner.png') }}" onerror="this.style.display='none'">
+    </figure>
+  </div>
+</div>

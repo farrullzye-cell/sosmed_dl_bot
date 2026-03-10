@@ -1,0 +1,583 @@
+Checking availability of current mirror:
+[*] https://mirrors.cqupt.edu.cn/termux/termux-main: ok
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following additional packages will be installed:
+  abseil-cpp adwaita-icon-theme adwaita-icon-theme-legacy at-spi2-core atk
+  cups dbus desktop-file-utils gtk-update-icon-cache gtk3 hicolor-icon-theme
+  libepoxy libevdev libglvnd libminizip libnspr libnss
+  libwebrtc-audio-processing libxcomposite libxcursor libxdamage libxfixes
+  libxi libxinerama libxkbcommon libxrandr libxtst libxxf86vm mesa opengl
+  pulseaudio shared-mime-info speexdsp vulkan-loader xkeyboard-config
+Suggested packages:
+  mesa-dev
+The following NEW packages will be installed:
+  abseil-cpp adwaita-icon-theme adwaita-icon-theme-legacy at-spi2-core atk
+  chromium cups dbus desktop-file-utils gtk-update-icon-cache gtk3
+  hicolor-icon-theme libepoxy libevdev libglvnd libminizip libnspr libnss
+  libwebrtc-audio-processing libxcomposite libxcursor libxdamage libxfixes
+  libxi libxinerama libxkbcommon libxrandr libxtst libxxf86vm mesa opengl
+  pulseaudio shared-mime-info speexdsp vulkan-loader xkeyboard-config
+0 upgraded, 36 newly installed, 0 to remove and 0 not upgraded.
+Need to get 138 MB/161 MB of archives.
+After this operation, 767 MB of additional disk space will be used.
+Get:1 https://mirrors.cqupt.edu.cn/termux/termux-main stable/main aarch64 pulseaudio aarch64 17.0-1 [844 kB]
+Get:2 https://mirrors.cqupt.edu.cn/termux/termux-x11 x11/main aarch64 chromium aarch64 145.0.7632.159 [137 MB]
+Fetched 117 MB in 6min 40s (293 kB/s)
+Selecting previously unselected package abseil-cpp.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 31949 files and directories currently installed.)
+Preparing to unpack .../00-abseil-cpp_20250814.1_aarch64.deb ...
+Unpacking abseil-cpp (20250814.1) ...
+Selecting previously unselected package hicolor-icon-theme.
+Preparing to unpack .../01-hicolor-icon-theme_0.18_all.deb ...
+Unpacking hicolor-icon-theme (0.18) ...
+Selecting previously unselected package adwaita-icon-theme-legacy.
+Preparing to unpack .../02-adwaita-icon-theme-legacy_46.2-1_all.deb ...
+Unpacking adwaita-icon-theme-legacy (46.2-1) ...
+Selecting previously unselected package adwaita-icon-theme.
+Preparing to unpack .../03-adwaita-icon-theme_49.0_all.deb ...
+Unpacking adwaita-icon-theme (49.0) ...
+Selecting previously unselected package dbus.
+Preparing to unpack .../04-dbus_1.16.2-3_aarch64.deb ...
+Unpacking dbus (1.16.2-3) ...
+Selecting previously unselected package libxi.
+Preparing to unpack .../05-libxi_1.8.2-1_aarch64.deb ...
+Unpacking libxi (1.8.2-1) ...
+Selecting previously unselected package libxtst.
+Preparing to unpack .../06-libxtst_1.2.5-1_aarch64.deb ...
+Unpacking libxtst (1.2.5-1) ...
+Selecting previously unselected package at-spi2-core.
+Preparing to unpack .../07-at-spi2-core_2.58.3-3_aarch64.deb ...
+Unpacking at-spi2-core (2.58.3-3) ...
+Selecting previously unselected package atk.
+Preparing to unpack .../08-atk_2.48.0_all.deb ...
+Unpacking atk (2.48.0) ...
+Selecting previously unselected package cups.
+Preparing to unpack .../09-cups_2.4.16_aarch64.deb ...
+Unpacking cups (2.4.16) ...
+Selecting previously unselected package desktop-file-utils.
+Preparing to unpack .../10-desktop-file-utils_0.28-3_aarch64.deb ...
+Unpacking desktop-file-utils (0.28-3) ...
+Selecting previously unselected package gtk-update-icon-cache.
+Preparing to unpack .../11-gtk-update-icon-cache_3.24.51_aarch64.deb ...
+Unpacking gtk-update-icon-cache (3.24.51) ...
+Selecting previously unselected package libglvnd.
+Preparing to unpack .../12-libglvnd_1.7.0-1_aarch64.deb ...
+Unpacking libglvnd (1.7.0-1) ...
+Selecting previously unselected package libxfixes.
+Preparing to unpack .../13-libxfixes_6.0.2_aarch64.deb ...
+Unpacking libxfixes (6.0.2) ...
+Selecting previously unselected package libxxf86vm.
+Preparing to unpack .../14-libxxf86vm_1.1.7_aarch64.deb ...
+Unpacking libxxf86vm (1.1.7) ...
+Selecting previously unselected package vulkan-loader.
+Preparing to unpack .../15-vulkan-loader_0.0.3_all.deb ...
+Unpacking vulkan-loader (0.0.3) ...
+Selecting previously unselected package mesa.
+Preparing to unpack .../16-mesa_26.0.1_aarch64.deb ...
+Unpacking mesa (26.0.1) ...
+Selecting previously unselected package opengl.
+Preparing to unpack .../17-opengl_4.5_all.deb ...
+Unpacking opengl (4.5) ...
+Selecting previously unselected package libepoxy.
+Preparing to unpack .../18-libepoxy_1.5.10-3_aarch64.deb ...
+Unpacking libepoxy (1.5.10-3) ...
+Selecting previously unselected package libxcomposite.
+Preparing to unpack .../19-libxcomposite_0.4.7_aarch64.deb ...
+Unpacking libxcomposite (0.4.7) ...
+Selecting previously unselected package libxcursor.
+Preparing to unpack .../20-libxcursor_1.2.3_aarch64.deb ...
+Unpacking libxcursor (1.2.3) ...
+Selecting previously unselected package libxdamage.
+Preparing to unpack .../21-libxdamage_1.1.7_aarch64.deb ...
+Unpacking libxdamage (1.1.7) ...
+Selecting previously unselected package libxinerama.
+Preparing to unpack .../22-libxinerama_1.1.6_aarch64.deb ...
+Unpacking libxinerama (1.1.6) ...
+Selecting previously unselected package xkeyboard-config.
+Preparing to unpack .../23-xkeyboard-config_2.47-1_all.deb ...
+Unpacking xkeyboard-config (2.47-1) ...
+Selecting previously unselected package libxkbcommon.
+Preparing to unpack .../24-libxkbcommon_1.13.1_aarch64.deb ...
+Unpacking libxkbcommon (1.13.1) ...
+Selecting previously unselected package libxrandr.
+Preparing to unpack .../25-libxrandr_1.5.5_aarch64.deb ...
+Unpacking libxrandr (1.5.5) ...
+Selecting previously unselected package shared-mime-info.
+Preparing to unpack .../26-shared-mime-info_2.4-4_aarch64.deb ...
+Unpacking shared-mime-info (2.4-4) ...
+Selecting previously unselected package gtk3.
+Preparing to unpack .../27-gtk3_3.24.51_aarch64.deb ...
+Unpacking gtk3 (3.24.51) ...
+Selecting previously unselected package libevdev.
+Preparing to unpack .../28-libevdev_1.13.6_aarch64.deb ...
+Unpacking libevdev (1.13.6) ...
+Selecting previously unselected package libminizip.
+Preparing to unpack .../29-libminizip_1.3.2-1_aarch64.deb ...
+Unpacking libminizip (1.3.2-1) ...
+Selecting previously unselected package libnspr.
+Preparing to unpack .../30-libnspr_4.38.2_aarch64.deb ...
+Unpacking libnspr (4.38.2) ...
+Selecting previously unselected package libnss.
+Preparing to unpack .../31-libnss_3.121_aarch64.deb ...
+Unpacking libnss (3.121) ...
+Selecting previously unselected package libwebrtc-audio-processing.
+Preparing to unpack .../32-libwebrtc-audio-processing_1.3-4_aarch64.deb ...
+Unpacking libwebrtc-audio-processing (1.3-4) ...
+Selecting previously unselected package speexdsp.
+Preparing to unpack .../33-speexdsp_1.2.1-1_aarch64.deb ...
+Unpacking speexdsp (1.2.1-1) ...
+Selecting previously unselected package pulseaudio.
+Preparing to unpack .../34-pulseaudio_17.0-1_aarch64.deb ...
+Unpacking pulseaudio (17.0-1) ...
+Selecting previously unselected package chromium.
+Preparing to unpack .../35-chromium_145.0.7632.159_aarch64.deb ...
+Unpacking chromium (145.0.7632.159) ...
+Setting up gtk-update-icon-cache (3.24.51) ...
+Setting up libxcomposite (0.4.7) ...
+Setting up desktop-file-utils (0.28-3) ...
+Setting up hicolor-icon-theme (0.18) ...
+Setting up cups (2.4.16) ...
+Setting up libxinerama (1.1.6) ...
+Setting up libxrandr (1.5.5) ...
+Setting up adwaita-icon-theme-legacy (46.2-1) ...
+Setting up speexdsp (1.2.1-1) ...
+Setting up libnspr (4.38.2) ...
+Setting up xkeyboard-config (2.47-1) ...
+Setting up libevdev (1.13.6) ...
+Setting up adwaita-icon-theme (49.0) ...
+Setting up dbus (1.16.2-3) ...
+Setting up shared-mime-info (2.4-4) ...
+Setting up libglvnd (1.7.0-1) ...
+Setting up vulkan-loader (0.0.3) ...
+Setting up libxfixes (6.0.2) ...
+Setting up libnss (3.121) ...
+Setting up libminizip (1.3.2-1) ...
+Setting up libxcursor (1.2.3) ...
+Setting up libxxf86vm (1.1.7) ...
+Setting up libxi (1.8.2-1) ...
+Setting up abseil-cpp (20250814.1) ...
+Setting up libxdamage (1.1.7) ...
+Setting up libxkbcommon (1.13.1) ...
+Setting up libwebrtc-audio-processing (1.3-4) ...
+Setting up mesa (26.0.1) ...
+Setting up libxtst (1.2.5-1) ...
+Setting up pulseaudio (17.0-1) ...
+Setting up opengl (4.5) ...
+Setting up at-spi2-core (2.58.3-3) ...
+Setting up libepoxy (1.5.10-3) ...
+Setting up atk (2.48.0) ...
+Setting up gtk3 (3.24.51) ...
+Setting up chromium (145.0.7632.159) ...
+Processing triggers for glib (2.86.4-1) ...
+E: Setting in Stop via TCSAFLUSH for stdin failed! - tcsetattr (5: I/O error)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Write error - write (14: Bad address)
+E: Setting in Stop via TCSAFLUSH for stdin failed! - tcsetattr (5: I/O error)

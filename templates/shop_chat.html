@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="title">Shop Chat User {{user_id}}</h1>
+
+<div class="box">
+  <form method="post" action="/shop/chat/{{user_id}}/send">
+    <div class="field">
+      <label class="label is-size-7">Balas user (admin → user)</label>
+      <textarea class="textarea" name="text" rows="3" placeholder="Tulis balasan..."></textarea>
+    </div>
+    <button class="button is-link" type="submit">Send</button>
+  </form>
+</div>
+
+<div class="box">
+  <h2 class="subtitle">History</h2>
+  <div class="content is-size-7" style="max-height:60vh; overflow:auto;">
+    {% for m in msgs %}
+      <div style="border-bottom:1px solid #eee; padding:6px 0;">
+        <div><b>{{"USER" if m.direction=="in" else "ADMIN"}}</b> | {{m.created_at}}</div>
+        <div style="white-space:pre-wrap;">{{m.text}}</div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="title">Shop Deliveries</h1>
+
+<form class="box" method="get" action="/shop/deliveries">
+  <div class="field is-grouped">
+    <div class="control"><input class="input" name="user_id" placeholder="Filter user_id" value="{{user_id}}"></div>
+    <div class="control"><button class="button is-link" type="submit">Filter</button></div>
+    <div class="control"><a class="button is-light" href="/shop/deliveries">Reset</a></div>
+  </div>
+</form>
+
+<div class="table-container">
+<table class="table is-striped is-fullwidth is-size-7">
+  <thead><tr>
+    <th>Time</th><th>User</th><th>Listing</th><th>Claim</th><th>Stock</th><th>Status</th><th>Error</th>
+  </tr></thead>
+  <tbody>
+    {% for d in rows %}
+    <tr>
+      <td class="clip">{{d.created_at}}</td>
+      <td>{{d.user_id}}</td>
+      <td>{{d.listing_game}} - {{d.listing_title}}</td>
+      <td class="clip">{{d.claim_code or ''}}</td>
+      <td>{{d.stock_id or '-'}}</td>
+      <td>{{d.status}}</td>
+      <td class="clip">{{d.error or ''}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+{% endblock %}

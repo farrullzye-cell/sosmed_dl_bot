@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="title">Control Center (Safe)</h1>
+<p class="is-size-7">Tombol di sini hanya untuk aksi yang di-allowlist (bukan remote command bebas).</p>
+
+<div class="columns is-multiline">
+  <div class="column is-4">
+    <div class="box">
+      <div class="pill">Bot Status: {{ info.bot_status }}</div>
+      <div class="buttons mt-3">
+        <form method="post" action="/control/bot/start"><button class="button is-link" type="submit">Start Bot</button></form>
+        <form method="post" action="/control/bot/stop"><button class="button is-danger is-light" type="submit">Stop Bot</button></form>
+        <form method="post" action="/control/bot/restart"><button class="button is-link is-light" type="submit">Restart Bot</button></form>
+      </div>
+      <p class="is-size-7">Log bot tersimpan di <code>logs/bot.log</code></p>
+    </div>
+
+    <div class="box">
+      <h2 class="subtitle">Maintenance</h2>
+      <div class="buttons">
+        <form method="post" action="/control/task/git_pull"><button class="button is-link is-light" type="submit">git pull</button></form>
+        <form method="post" action="/control/task/pip_requirements"><button class="button is-link is-light" type="submit">pip -r requirements</button></form>
+        <form method="post" action="/control/task/update_ytdlp"><button class="button is-link is-light" type="submit">Update yt-dlp</button></form>
+        <form method="post" action="/control/task/pkg_update_upgrade"><button class="button is-link is-light" type="submit">pkg update+upgrade</button></form>
+      </div>
+    </div>
+
+    <div class="box">
+      <h2 class="subtitle">pkg install (Allowlist)</h2>
+      <form method="post" action="/control/task/pkg_install">
+        <div class="field">
+          <div class="select is-fullwidth">
+            <select name="pkg">
+              {% for p in allowed %}
+                <option value="{{p}}">{{p}}</option>
+              {% endfor %}
+            </select>
+          </div>
+        </div>
+        <button class="button is-link" type="submit">Install</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="column is-8">
+    <div class="box">
+      <h2 class="subtitle">Bot Log (Tail)</h2>
+      <pre style="white-space:pre-wrap; max-height:55vh; overflow:auto;">{{ info.bot_log_tail }}</pre>
+    </div>
+
+    <div class="box">
+      <h2 class="subtitle">Task Logs</h2>
+      <div class="table-container">
+        <table class="table is-striped is-fullwidth is-size-7">
+          <thead><tr><th>Log file</th><th>Aksi</th></tr></thead>
+          <tbody>
+            {% for t in info.tasks %}
+              <tr>
+                <td class="clip">{{t}}</td>
+                <td><a class="button is-small is-link is-light" href="/control/task/{{t}}">View</a></td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      <p class="is-size-7">Task berjalan di background. Refresh halaman untuk update.</p>
+    </div>
+  </div>
+</div>
+{% endblock %}

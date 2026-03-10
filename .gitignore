@@ -1,0 +1,22 @@
+# secrets
+.env
+cookies.txt
+*.pem
+.cloudflared/
+~/.cloudflared/
+
+# databases
+*.db
+bot.db
+
+# runtime
+__pycache__/
+*.pyc
+run/
+logs/
+downloads/
+shop_storage/
+tmp_*/
+
+# termux/service
+$PREFIX/var/service/

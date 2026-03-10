@@ -1,0 +1,189 @@
+/* ===== Modern UI theme (Bulma override) ===== */
+:root{
+  --bg: #f6f8fc;
+  --bg2:#eef2ff;
+  --card:#ffffff;
+  --text:#0f172a;
+  --muted:#64748b;
+  --border:#e5e7eb;
+  --primary:#4f46e5;
+  --primary2:#7c3aed;
+  --danger:#ef4444;
+  --shadow: 0 10px 30px rgba(2,6,23,.08);
+  --radius: 16px;
+  --radius-sm: 12px;
+  --ring: 0 0 0 4px rgba(79,70,229,.15);
+}
+
+html,body{
+  background: radial-gradient(1200px 600px at 10% 0%, var(--bg2), transparent 60%),
+              radial-gradient(900px 600px at 90% 10%, #ffe4e6, transparent 55%),
+              var(--bg);
+  color: var(--text);
+  min-height:100%;
+}
+
+[data-theme="dark"]{
+  --bg:#0b1220;
+  --bg2:#0b1220;
+  --card:#0f172a;
+  --text:#e5e7eb;
+  --muted:#94a3b8;
+  --border:#1f2a44;
+  --shadow: 0 14px 40px rgba(0,0,0,.35);
+  --primary:#6366f1;
+  --primary2:#a78bfa;
+  --ring: 0 0 0 4px rgba(99,102,241,.18);
+}
+
+.container{ max-width: 1180px; }
+
+/* ===== Navbar ===== */
+.app-navbar{
+  border-radius: var(--radius);
+  background: color-mix(in srgb, var(--card) 92%, transparent);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  margin-bottom: 18px;
+}
+
+.navbar-item, .navbar-link{
+  font-weight: 600;
+}
+
+.brand-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+}
+.brand-dot{
+  width:12px;height:12px;border-radius:999px;
+  background: linear-gradient(135deg, var(--primary), var(--primary2));
+  box-shadow: 0 0 0 4px rgba(79,70,229,.12);
+}
+
+.navbar-burger{
+  border-radius: 12px;
+}
+
+/* ===== Cards / boxes ===== */
+.box, .message, .notification{
+  border-radius: var(--radius);
+}
+
+.box{
+  background: var(--card);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+.title, .subtitle{
+  color: var(--text);
+}
+
+.help, .is-size-7, .has-text-grey, .has-text-grey-light{
+  color: var(--muted) !important;
+}
+
+/* ===== Buttons ===== */
+.button{
+  border-radius: 999px;
+  font-weight: 700;
+}
+
+.button.is-link{
+  background: linear-gradient(135deg, var(--primary), var(--primary2));
+  border: none;
+}
+.button.is-link.is-light{
+  background: transparent;
+  border: 1px solid color-mix(in srgb, var(--primary) 35%, var(--border));
+  color: var(--primary);
+}
+.button.is-danger.is-light{
+  border: 1px solid color-mix(in srgb, var(--danger) 35%, var(--border));
+}
+.button:focus, .button:active{
+  box-shadow: var(--ring);
+}
+
+/* ===== Inputs ===== */
+.input, .textarea, .select select{
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--card) 92%, transparent);
+  color: var(--text);
+}
+.input:focus, .textarea:focus, .select select:focus{
+  border-color: color-mix(in srgb, var(--primary) 65%, var(--border));
+  box-shadow: var(--ring);
+}
+
+/* ===== Tables ===== */
+.table{
+  background: transparent;
+}
+.table thead th{
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: color-mix(in srgb, var(--card) 92%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+  color: var(--muted);
+  font-size: .75rem;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+.table td, .table th{
+  border-color: var(--border);
+}
+.table.is-striped tbody tr:not(.is-selected):nth-child(even){
+  background: color-mix(in srgb, var(--card) 85%, transparent);
+}
+.table-container{
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  overflow: auto;
+  box-shadow: var(--shadow);
+  background: var(--card);
+}
+
+/* ===== Flash message modern ===== */
+.message.is-warning{
+  background: color-mix(in srgb, #fef3c7 60%, var(--card));
+  border: 1px solid color-mix(in srgb, #f59e0b 35%, var(--border));
+}
+[data-theme="dark"] .message.is-warning{
+  background: color-mix(in srgb, #3b2f12 60%, var(--card));
+}
+
+/* ===== Utility ===== */
+.clip{
+  max-width: 420px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.pill{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--card) 88%, transparent);
+  font-weight: 700;
+  font-size: .8rem;
+  color: var(--muted);
+}
+
+.footer-note{
+  margin-top: 18px;
+  color: var(--muted);
+  font-size: .8rem;
+}
+
+/* ===== Make Bulma sections nicer ===== */
+.section{ padding-top: 18px; }

@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>{{ title or "Panel Bot" }}</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<section class="section">
+  <div class="container">
+
+    <nav class="navbar is-spaced app-navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="/">
+          <span class="brand-badge">
+            <span class="brand-dot"></span>
+            <span>Control Panel</span>
+          </span>
+        </a>
+
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+
+      <div id="navMenu" class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item" href="/"><i class="fa-solid fa-gauge-high mr-2"></i>Dashboard</a>
+          <a class="navbar-item" href="/users"><i class="fa-solid fa-users mr-2"></i>Users</a>
+          <a class="navbar-item" href="/monitor/"><i class="fa-solid fa-microchip mr-2"></i>Monitor</a>
+          <a class="navbar-item" href="/downloads"><i class="fa-solid fa-download mr-2"></i>Downloads</a>
+          <a class="navbar-item" href="/actions"><i class="fa-solid fa-bolt mr-2"></i>Admin Actions</a>
+
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link"><i class="fa-solid fa-layer-group mr-2"></i>Apps</a>
+            <a class="navbar-item" href="/shop/"><i class="fa-solid fa-store mr-2"></i>Shop Akun</a>
+            <a class="navbar-item" href="/support/"><i class="fa-solid fa-headset mr-2"></i>Support Chat</a>
+          </div>
+
+          <a class="navbar-item" href="/settings"><i class="fa-solid fa-gear mr-2"></i>Settings</a>
+        </div>
+
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <button id="themeToggle" class="button is-light is-small">
+              Dark Mode
+            </button>
+          </div>
+          <div class="navbar-item">
+            <a class="button is-danger is-light" href="/logout">
+              <span class="icon"><i class="fa-solid fa-right-from-bracket"></i></span>
+              <span>Logout</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <article class="message is-warning">
+          <div class="message-body">
+            {% for m in messages %}<div>{{ m }}</div>{% endfor %}
+          </div>
+        </article>
+      {% endif %}
+    {% endwith %}
+
+    {% block content %}{% endblock %}
+
+    <div class="footer-note">
+      Tips: gunakan menu <b>Apps → Shop Akun</b> dan <b>Apps → Support Chat</b> untuk admin live chat.
+    </div>
+  </div>
+</section>
+
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

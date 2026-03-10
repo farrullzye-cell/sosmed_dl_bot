@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="title">Order Detail</h1>
+
+<div class="box is-size-7">
+  <div><b>Order:</b> {{o.order_code}}</div>
+  <div><b>User:</b> {{o.user_id}} (@{{o.username or ''}}) - {{o.first_name or ''}}</div>
+  <div><b>Listing:</b> {{o.listing_game}} - {{o.listing_title}}</div>
+  <div><b>Amount:</b> {{ money_idr(o.amount_int) }}</div>
+  <div><b>Status:</b> {{o.status}}</div>
+  <div><b>Proof:</b> {{o.proof_file_id or "-"}}</div>
+  <div><b>Created:</b> {{o.created_at}}</div>
+  <div><b>Paid:</b> {{o.paid_at or "-"}}</div>
+  <div><b>Delivered:</b> {{o.delivered_at or "-"}}</div>
+</div>
+
+<div class="buttons">
+  {% if o.proof_file_id %}
+    <a class="button is-link is-light" href="/shop/orders/{{o.order_code}}/proof" target="_blank">Lihat Proof</a>
+  {% endif %}
+  <a class="button is-light" href="/shop/chat/{{o.user_id}}">Chat User</a>
+</div>
+
+<div class="box">
+  <h2 class="subtitle">Approve</h2>
+  <p class="is-size-7">Approve: set PAID → reserve 1 stock → buat kode claim → kirim ke user.</p>
+  <form method="post" action="/shop/orders/{{o.order_code}}/approve" onsubmit="return confirm('Approve order ini?');">
+    <button class="button is-success" type="submit">Approve + Create Claim</button>
+  </form>
+</div>
+
+<div class="box">
+  <h2 class="subtitle">Reject</h2>
+  <form method="post" action="/shop/orders/{{o.order_code}}/reject" onsubmit="return confirm('Reject order ini?');">
+    <input class="input" name="reason" placeholder="Alasan reject (opsional)">
+    <button class="button is-danger is-light mt-2" type="submit">Reject</button>
+  </form>
+</div>
+{% endblock %}

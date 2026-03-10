@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="title">Downloads</h1>
+
+<form class="box" method="get" action="/downloads">
+  <div class="columns is-multiline">
+    <div class="column is-3">
+      <label class="label is-size-7">User ID</label>
+      <input class="input" name="user_id" value="{{ user_id }}" placeholder="contoh: 12345">
+    </div>
+    <div class="column is-3">
+      <label class="label is-size-7">Status</label>
+      <input class="input" name="status" value="{{ status }}" placeholder="sent/error/rejected">
+    </div>
+    <div class="column is-3">
+      <label class="label is-size-7">Platform</label>
+      <input class="input" name="platform" value="{{ platform }}" placeholder="tiktok/youtube/...">
+    </div>
+    <div class="column is-3" style="display:flex; align-items:end; gap:8px;">
+      <button class="button is-link" type="submit">Filter</button>
+      <a class="button is-light" href="/downloads">Reset</a>
+    </div>
+  </div>
+</form>
+
+<div class="table-container">
+<table class="table is-striped is-fullwidth is-size-7">
+  <thead>
+    <tr>
+      <th>ID</th><th>User</th><th>Platform</th><th>Status</th><th>Title</th><th>Size</th><th>Time</th><th>URL</th><th>Error</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for d in downloads %}
+    <tr>
+      <td>{{ d.id }}</td>
+      <td>{{ d.user_id }}{% if d.username %} (@{{ d.username }}){% endif %}</td>
+      <td>{{ d.platform }}</td>
+      <td>{{ d.status }}</td>
+      <td class="clip">{{ d.title or "" }}</td>
+      <td>{% if d.file_size %}{{ (d.file_size/1024/1024) | round(1) }} MB{% else %}-{% endif %}</td>
+      <td>{{ d.created_at }}</td>
+      <td class="clip">{{ d.url }}</td>
+      <td class="clip">{{ d.error or "" }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+{% endblock %}

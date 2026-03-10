@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="title">Shop Claims</h1>
+
+<div class="table-container">
+<table class="table is-striped is-fullwidth is-size-7">
+  <thead><tr>
+    <th>Code</th><th>User</th><th>Listing</th><th>Status</th><th>Stock</th><th>Created</th><th>Used</th><th>Aksi</th>
+  </tr></thead>
+  <tbody>
+    {% for c in rows %}
+    <tr>
+      <td class="clip">{{c.code}}</td>
+      <td>{{c.user_id}}</td>
+      <td>{{c.listing_game}} - {{c.listing_title}}</td>
+      <td>{{c.status}}</td>
+      <td>{{c.stock_id or '-'}}</td>
+      <td class="clip">{{c.created_at}}</td>
+      <td class="clip">{{c.used_at or ''}}</td>
+      <td>
+        {% if c.status == 'REVOKED' %}
+          <form method="post" action="/shop/claims/{{c.code}}/unrevoke" style="display:inline">
+            <button class="button is-small is-success is-light" type="submit">Unrevoke</button>
+          </form>
+        {% else %}
+          <form method="post" action="/shop/claims/{{c.code}}/revoke" style="display:inline">
+            <button class="button is-small is-danger is-light" type="submit">Revoke</button>
+          </form>
+        {% endif %}
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+{% endblock %}

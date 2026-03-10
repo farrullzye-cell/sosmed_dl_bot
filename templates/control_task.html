@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="title">Task Log</h1>
+<div class="pill">{{ name }}</div>
+<div class="box mt-3">
+  <pre style="white-space:pre-wrap; max-height:70vh; overflow:auto;">{{ content }}</pre>
+</div>
+<a class="button is-link is-light" href="/control/">Back</a>
+{% endblock %}

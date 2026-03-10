@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="title">Shop Settings</h1>
+<div class="box">
+  <form method="post" action="/shop/settings">
+    <div class="field">
+      <label class="label">Payment Instructions</label>
+      <textarea class="textarea" name="payment_instructions" rows="10">{{ payment_instructions }}</textarea>
+    </div>
+    <button class="button is-primary" type="submit">Save</button>
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,133 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="title">System Monitor</h1>
+<p class="is-size-7">Monitoring Termux (CPU/RAM/Disk/Network/Uptime/Temp + Top Process). Auto refresh.</p>
+
+<div class="columns is-multiline">
+  <div class="column is-3">
+    <div class="box">
+      <div class="pill">CPU</div>
+      <div class="title" id="cpu">-</div>
+      <div class="is-size-7 has-text-grey">Load: <span id="load">-</span></div>
+    </div>
+  </div>
+
+  <div class="column is-3">
+    <div class="box">
+      <div class="pill">RAM</div>
+      <div class="title" id="ram">-</div>
+      <div class="is-size-7 has-text-grey">Used: <span id="ram_used">-</span> / <span id="ram_total">-</span></div>
+    </div>
+  </div>
+
+  <div class="column is-3">
+    <div class="box">
+      <div class="pill">Network</div>
+      <div class="title" id="net">-</div>
+      <div class="is-size-7 has-text-grey">RX/TX total: <span id="net_total">-</span></div>
+    </div>
+  </div>
+
+  <div class="column is-3">
+    <div class="box">
+      <div class="pill">Uptime / Temp</div>
+      <div class="title" id="uptime">-</div>
+      <div class="is-size-7 has-text-grey">Temp: <span id="temp">-</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="box">
+  <h2 class="subtitle">Disk</h2>
+  <div class="table-container">
+    <table class="table is-striped is-fullwidth is-size-7">
+      <thead><tr><th>Path</th><th>Used</th><th>Total</th><th>Free</th><th>%</th></tr></thead>
+      <tbody id="disks"></tbody>
+    </table>
+  </div>
+</div>
+
+<div class="box">
+  <h2 class="subtitle">Top Processes (CPU)</h2>
+  <div class="table-container">
+    <table class="table is-striped is-fullwidth is-size-7">
+      <thead><tr><th>PID</th><th>CPU%</th><th>MEM%</th><th>CMD</th><th>ARGS</th></tr></thead>
+      <tbody id="procs"></tbody>
+    </table>
+  </div>
+</div>
+
+<p class="is-size-7 has-text-grey">Last update: <span id="last">-</span> | Python: <span id="py">-</span></p>
+
+<script>
+async function fetchStats(){
+  const r = await fetch('/monitor/json', {cache:'no-store'});
+  const j = await r.json();
+
+  const fmtBytes = (n)=>{
+    const units=['B','KB','MB','GB','TB'];
+    let x=Number(n||0), u=0;
+    while(x>=1024 && u<units.length-1){ x/=1024; u++; }
+    return x.toFixed(1)+' '+units[u];
+  };
+
+  const fmtUptime = (s)=>{
+    s = Number(s||0);
+    const d = Math.floor(s/86400); s%=86400;
+    const h = Math.floor(s/3600); s%=3600;
+    const m = Math.floor(s/60); s%=60;
+    if(d>0) return `${d}d ${h}h ${m}m`;
+    if(h>0) return `${h}h ${m}m`;
+    return `${m}m ${s}s`;
+  };
+
+  document.getElementById('cpu').textContent = (j.cpu_percent||0).toFixed(1) + '%';
+  document.getElementById('load').textContent = `${j.loadavg["1m"].toFixed(2)} / ${j.loadavg["5m"].toFixed(2)} / ${j.loadavg["15m"].toFixed(2)}`;
+
+  document.getElementById('ram').textContent = (j.mem.percent||0).toFixed(1) + '%';
+  document.getElementById('ram_used').textContent = fmtBytes(j.mem.used);
+  document.getElementById('ram_total').textContent = fmtBytes(j.mem.total);
+
+  const rx = j.net.rx_s || 0, tx = j.net.tx_s || 0;
+  document.getElementById('net').textContent = `↓ ${fmtBytes(rx)}/s  ↑ ${fmtBytes(tx)}/s`;
+  document.getElementById('net_total').textContent = `${fmtBytes(j.net.rx_total)} / ${fmtBytes(j.net.tx_total)}`;
+
+  document.getElementById('uptime').textContent = fmtUptime(j.uptime_s);
+  document.getElementById('temp').textContent = (j.temperature_c===null || j.temperature_c===undefined) ? '-' : (j.temperature_c.toFixed(1)+' °C');
+
+  // disks
+  const dBody = document.getElementById('disks');
+  dBody.innerHTML = '';
+  (j.disks||[]).forEach(d=>{
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td class="clip">${d.path}</td>
+      <td>${fmtBytes(d.used)}</td>
+      <td>${fmtBytes(d.total)}</td>
+      <td>${fmtBytes(d.free)}</td>
+      <td>${(d.percent||0).toFixed(1)}%</td>`;
+    dBody.appendChild(tr);
+  });
+
+  // procs
+  const pBody = document.getElementById('procs');
+  pBody.innerHTML = '';
+  (j.top||[]).forEach(p=>{
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>${p.pid}</td>
+      <td>${p.cpu}</td>
+      <td>${p.mem}</td>
+      <td class="clip">${p.comm}</td>
+      <td class="clip">${p.args}</td>`;
+    pBody.appendChild(tr);
+  });
+
+  document.getElementById('last').textContent = j.time;
+  document.getElementById('py').textContent = j.python;
+}
+
+fetchStats();
+setInterval(fetchStats, 2500);
+</script>
+{% endblock %}

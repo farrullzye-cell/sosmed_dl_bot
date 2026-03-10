@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="title">Shop Dashboard</h1>
+
+<div class="columns is-multiline">
+  <div class="column is-3"><div class="box"><div class="heading">Listings</div><div class="title">{{ listings }}</div></div></div>
+  <div class="column is-3"><div class="box"><div class="heading">WAITING_PROOF</div><div class="title">{{ waiting }}</div></div></div>
+  <div class="column is-3"><div class="box"><div class="heading">VERIFYING</div><div class="title">{{ verifying }}</div></div></div>
+  <div class="column is-3"><div class="box"><div class="heading">PAID</div><div class="title">{{ paid }}</div></div></div>
+  <div class="column is-3"><div class="box"><div class="heading">DELIVERED</div><div class="title">{{ delivered }}</div></div></div>
+</div>
+
+<div class="buttons">
+  <a class="button is-link is-light" href="/shop/listings">Listings</a>
+  <a class="button is-link is-light" href="/shop/orders">Orders</a>
+  <a class="button is-link is-light" href="/shop/claims">Claims</a>
+  <a class="button is-link is-light" href="/shop/deliveries">Deliveries</a>
+  <a class="button is-primary is-light" href="/shop/settings">Settings</a>
+</div>
+{% endblock %}

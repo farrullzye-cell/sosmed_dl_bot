@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="title">Shop Listings</h1>
+
+<div class="box">
+  <h2 class="subtitle">Create Listing</h2>
+  <form method="post" action="/shop/listings/create">
+    <div class="columns is-multiline">
+      <div class="column is-3"><input class="input" name="game" placeholder="Game (MLBB/FF/dll)" required></div>
+      <div class="column is-5"><input class="input" name="title" placeholder="Title" required></div>
+      <div class="column is-2"><input class="input" name="price_int" placeholder="Harga IDR" required></div>
+      <div class="column is-2">
+        <div class="select is-fullwidth">
+          <select name="preview_type">
+            <option value="text">preview text</option>
+            <option value="image">preview image</option>
+          </select>
+        </div>
+      </div>
+      <div class="column is-3"><input class="input" name="region" placeholder="Region"></div>
+      <div class="column is-3"><input class="input" name="rank" placeholder="Rank"></div>
+      <div class="column is-12"><textarea class="textarea" name="description" placeholder="Deskripsi..."></textarea></div>
+    </div>
+    <button class="button is-link" type="submit">Create</button>
+  </form>
+</div>
+
+<div class="table-container">
+<table class="table is-striped is-fullwidth is-size-7">
+  <thead><tr>
+    <th>ID</th><th>Game</th><th>Title</th><th>Price</th><th>Active</th><th>Preview</th><th>Aksi</th>
+  </tr></thead>
+  <tbody>
+  {% for l in rows %}
+    <tr>
+      <td>{{l.id}}</td>
+      <td>{{l.game}}</td>
+      <td>{{l.title}}</td>
+      <td>{{l.price_int}}</td>
+      <td>{{"YA" if l.is_active==1 else "TIDAK"}}</td>
+      <td class="clip">{{l.preview_path or ""}}</td>
+      <td>
+        <a class="button is-small is-info is-light" href="/shop/listings/{{l.id}}">Edit + Stock</a>
+        <form method="post" action="/shop/listings/{{l.id}}/delete" style="display:inline" onsubmit="return confirm('Delete listing?');">
+          <button class="button is-small is-danger is-light" type="submit">Delete</button>
+        </form>
+      </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+</div>
+{% endblock %}

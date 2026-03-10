@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="title">Users</h1>
+
+<form class="box" method="get" action="/users">
+  <div class="field is-grouped">
+    <div class="control is-expanded">
+      <input class="input" name="q" placeholder="Cari user_id / username / nama" value="{{ q }}">
+    </div>
+    <div class="control">
+      <button class="button is-link" type="submit">Search</button>
+    </div>
+    <div class="control">
+      <a class="button is-light" href="/users">Reset</a>
+    </div>
+  </div>
+</form>
+
+<div class="table-container">
+<table class="table is-striped is-fullwidth is-size-7">
+  <thead>
+    <tr>
+      <th>User ID</th>
+      <th>Username</th>
+      <th>Nama</th>
+      <th>Banned</th>
+      <th>Premium Until</th>
+      <th>Override Limit</th>
+      <th>Override MaxMB</th>
+      <th>Note</th>
+      <th>Last Seen</th>
+      <th>Aksi</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for u in users %}
+    <tr>
+      <td>{{ u.user_id }}</td>
+      <td>{{ u.username }}</td>
+      <td>{{ u.first_name }}</td>
+      <td>{{ "YA" if u.is_banned==1 else "TIDAK" }}</td>
+      <td>{{ u.premium_until or "-" }}</td>
+      <td>{{ u.daily_limit_override if u.daily_limit_override is not none else "-" }}</td>
+      <td>{{ u.max_mb_override if u.max_mb_override is not none else "-" }}</td>
+      <td class="clip">{{ u.note or "" }}</td>
+      <td>{{ u.last_seen }}</td>
+      <td style="min-width:520px;">
+        <div class="buttons are-small mb-2">
+          {% if u.is_banned==1 %}
+          <form method="post" action="/users/{{u.user_id}}/unban">
+            <button class="button is-success is-light" type="submit">Unban</button>
+          </form>
+          {% else %}
+          <form method="post" action="/users/{{u.user_id}}/ban">
+            <button class="button is-danger is-light" type="submit">Ban</button>
+          </form>
+          {% endif %}
+
+          <form method="post" action="/users/{{u.user_id}}/premium" style="display:flex; gap:6px;">
+            <input class="input is-small" name="days" placeholder="days" style="width:90px;" />
+            <button class="button is-link is-light" type="submit">Add Premium</button>
+          </form>
+
+          <form method="post" action="/users/{{u.user_id}}/delpremium">
+            <button class="button is-warning is-light" type="submit">Del Premium</button>
+          </form>
+
+          <form method="get" action="/downloads">
+            <input type="hidden" name="user_id" value="{{u.user_id}}">
+            <button class="button is-info is-light" type="submit">Lihat Downloads</button>
+          </form>
+        </div>
+
+        <div class="box p-2 mb-2">
+          <div class="is-size-7 has-text-weight-semibold mb-1">Set Override Limit</div>
+          <form method="post" action="/users/{{u.user_id}}/limits" style="display:flex; gap:6px; flex-wrap:wrap;">
+            <input class="input is-small" name="daily_limit_override" placeholder="daily limit" style="width:120px;" />
+            <input class="input is-small" name="max_mb_override" placeholder="max MB" style="width:120px;" />
+            <button class="button is-link is-small is-light" type="submit">Save</button>
+          </form>
+          <div class="buttons are-small mt-2">
+            <form method="post" action="/users/{{u.user_id}}/clearlimits">
+              <button class="button is-light" type="submit">Clear Override</button>
+            </form>
+            <form method="post" action="/users/{{u.user_id}}/resetdaily">
+              <button class="button is-light" type="submit">Reset Daily Today</button>
+            </form>
+          </div>
+        </div>
+
+        <div class="box p-2 mb-2">
+          <div class="is-size-7 has-text-weight-semibold mb-1">Note</div>
+          <form method="post" action="/users/{{u.user_id}}/note" style="display:flex; gap:6px;">
+            <input class="input is-small" name="note" placeholder="catatan user..." value="{{ u.note or '' }}" />
+            <button class="button is-link is-small is-light" type="submit">Save Note</button>
+          </form>
+        </div>
+
+        <div class="box p-2">
+          <div class="is-size-7 has-text-weight-semibold mb-1">Danger Zone</div>
+          <form method="post" action="/users/{{u.user_id}}/delete" onsubmit="return confirm('Hapus user {{u.user_id}} beserta log?');">
+            <button class="button is-danger is-small is-light" type="submit">Delete User</button>
+          </form>
+        </div>
+
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+{% endblock %}

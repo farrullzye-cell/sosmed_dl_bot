@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="title">Shop Orders</h1>
+
+<form class="box" method="get" action="/shop/orders">
+  <div class="field is-grouped">
+    <div class="control"><input class="input" name="status" placeholder="Filter status" value="{{status}}"></div>
+    <div class="control"><button class="button is-link" type="submit">Filter</button></div>
+    <div class="control"><a class="button is-light" href="/shop/orders">Reset</a></div>
+  </div>
+</form>
+
+<div class="table-container">
+<table class="table is-striped is-fullwidth is-size-7">
+  <thead><tr>
+    <th>Order</th><th>User</th><th>Listing</th><th>Status</th><th>Proof</th><th>Time</th><th>Aksi</th>
+  </tr></thead>
+  <tbody>
+    {% for o in rows %}
+    <tr>
+      <td><a href="/shop/orders/{{o.order_code}}">{{o.order_code}}</a></td>
+      <td>{{o.user_id}} (@{{o.username or ''}})</td>
+      <td>{{o.listing_game}} - {{o.listing_title}}</td>
+      <td>{{o.status}}</td>
+      <td>{{"YA" if o.proof_file_id else "TIDAK"}}</td>
+      <td class="clip">{{o.created_at}}</td>
+      <td>
+        <a class="button is-small is-info is-light" href="/shop/orders/{{o.order_code}}">Detail</a>
+        <a class="button is-small is-light" href="/shop/chat/{{o.user_id}}">Chat</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="title">Support (Downloader) - Threads</h1>
+<p class="is-size-7">User yang pernah chat via <b>/support</b>.</p>
+
+<div class="table-container">
+<table class="table is-striped is-fullwidth is-size-7">
+  <thead><tr><th>User ID</th><th>Last Time</th><th>Aksi</th></tr></thead>
+  <tbody>
+    {% for r in rows %}
+    <tr>
+      <td>{{ r.user_id }}</td>
+      <td class="clip">{{ r.last_time }}</td>
+      <td><a class="button is-small is-link is-light" href="/support/chat/{{r.user_id}}">Open Chat</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+{% endblock %}

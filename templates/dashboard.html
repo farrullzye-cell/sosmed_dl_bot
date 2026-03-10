@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="title">Dashboard</h1>
+
+<div class="columns is-multiline">
+  <div class="column is-3">
+    <div class="box">
+      <div class="heading">Total Users</div>
+      <div class="title">{{ stats.total_users }}</div>
+    </div>
+  </div>
+  <div class="column is-3">
+    <div class="box">
+      <div class="heading">Banned</div>
+      <div class="title">{{ stats.banned_users }}</div>
+    </div>
+  </div>
+  <div class="column is-3">
+    <div class="box">
+      <div class="heading">Total Downloads</div>
+      <div class="title">{{ stats.total_downloads }}</div>
+    </div>
+  </div>
+  <div class="column is-3">
+    <div class="box">
+      <div class="heading">Runtime Web</div>
+      <div class="title">{{ runtime }}</div>
+      <div class="is-size-7">UTC: {{ now_utc }}</div>
+    </div>
+  </div>
+</div>
+
+<div class="columns">
+  <div class="column is-5">
+    <h2 class="subtitle">Top Platform</h2>
+    <div class="table-container">
+      <table class="table is-striped is-fullwidth is-size-7">
+        <thead><tr><th>Platform</th><th>Count</th></tr></thead>
+        <tbody>
+        {% for p in stats.platforms %}
+          <tr><td>{{ p.platform }}</td><td>{{ p.c }}</td></tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="column is-7">
+    <h2 class="subtitle">20 Download Terakhir</h2>
+    <div class="table-container">
+    <table class="table is-striped is-fullwidth is-size-7">
+      <thead>
+        <tr>
+          <th>ID</th><th>User</th><th>Platform</th><th>Status</th><th>Ukuran</th><th>Waktu</th><th>URL</th><th>Error</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for d in stats.last_downloads %}
+        <tr>
+          <td>{{ d.id }}</td>
+          <td>{{ d.user_id }}{% if d.username %} (@{{ d.username }}){% endif %}</td>
+          <td>{{ d.platform }}</td>
+          <td>{{ d.status }}</td>
+          <td>{% if d.file_size %}{{ (d.file_size/1024/1024) | round(1) }} MB{% else %}-{% endif %}</td>
+          <td>{{ d.created_at }}</td>
+          <td class="clip">{{ d.url }}</td>
+          <td class="clip">{{ d.error or "" }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    </div>
+  </div>
+</div>
+{% endblock %}

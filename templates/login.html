@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Login Panel</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<section class="section">
+  <div class="container" style="max-width: 520px;">
+    <div class="box">
+      <h1 class="title">Login Panel</h1>
+      <p class="is-size-7">Masuk untuk mengelola bot, shop, dan support chat.</p>
+
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          <article class="message is-danger">
+            <div class="message-body">
+              {% for m in messages %}<div>{{ m }}</div>{% endfor %}
+            </div>
+          </article>
+        {% endif %}
+      {% endwith %}
+
+      <form method="post" action="/login">
+        <div class="field">
+          <label class="label">Username</label>
+          <div class="control">
+            <input class="input" name="username" required />
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Password</label>
+          <div class="control">
+            <input class="input" type="password" name="password" required />
+          </div>
+        </div>
+
+        <button class="button is-link is-fullwidth" type="submit">Masuk</button>
+      </form>
+    </div>
+  </div>
+</section>
+</body>
+</html>
